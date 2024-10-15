@@ -9,10 +9,12 @@ function App() {
     if (toDo === "") {
       return; // toDo가 비어있다면 이 함수 작동 x (killed)
     }
-    setTodo("");
     setToDos((currentArray) => [toDo, ...currentArray]);
+    setTodo("");
   };
-  console.log(toDos);
+  console.log(toDo, "toDo", setTodo, "setTodo");
+  console.log(toDos, "toDos", setToDos);
+
   return (
     <div>
       <h1>My To Dos ({toDos.length})</h1>
@@ -25,6 +27,12 @@ function App() {
         />
         <button>Add To Do</button>
       </form>
+      <hr />
+      <ul>
+        {toDos.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
     </div>
   );
 }
