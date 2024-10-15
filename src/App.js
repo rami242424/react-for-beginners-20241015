@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 function Hello() {
+  // 방법1
   function byeFn(){
     console.log("Bye :(");
   }
@@ -9,6 +10,21 @@ function Hello() {
     return byeFn;
   }
   useEffect(HiFn, []);
+
+  // 방법2
+  // useEffect(() => {
+  //   console.log("Hi :)");
+  //   return () => console.log("Bye :(");
+  // }, []);
+  
+  // 방법3
+  // useEffect(function(){
+  //   console.log("Hi :)");
+  //   return function() {
+  //     console.log("Bye :(");
+  //   }
+  // }, []);
+  
   return <h1>Hello</h1>;
 }
 function App() {
