@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [toDo, setToDo] = useState("");
+  const [toDos, setToDos] = useState([]);
+
   const onChange = (event) => {
     setToDo(event.target.value);
   };
@@ -10,10 +12,13 @@ function App() {
     if (toDo === "") {
       return; // toDo가 비어있으면 submit이벤트 작동 X
     }
-    setToDo("");
+    setToDos((currentArray) => [toDo, ...currentArray]);
+    setToDo(""); // = {toDo = ""}랑 같은거임
   };
+  console.log(toDos);
   return (
     <div>
+      <h1>My To Dos : {toDos.length}</h1>
       <form onSubmit={onSubmit}>
         <input
           onChange={onChange}
