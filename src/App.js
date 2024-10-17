@@ -9,18 +9,23 @@ function App() {
   const onChange = (event) => {
     setKeyword(event.target.value);
   };
-  console.log("i run all the time");
+  // console.log("i run all the time");
 
   useEffect(() => {
-    console.log("call the api");
-  }, []); // 처음 한번만 실행한다.
+    console.log("I run only once");
+  }, []); // 처음만 실행한다.
 
   useEffect(() => {
-    if (keyword !== "") {
-      // 빈값이 아닐때만 keyword 검색하자
-      console.log("서치중...", keyword);
-    }
+    console.log("I run when 'keyword' changes");
   }, [keyword]); // keyword가 변할때만 실행한다.
+
+  useEffect(() => {
+    console.log("I run when 'counter' changes..");
+  }, [counter]); // counter가 변할때만 실행한다.
+
+  useEffect(() => {
+    console.log("I run when keyword & counter changes!!");
+  }, [keyword, counter]);
 
   return (
     <div>
